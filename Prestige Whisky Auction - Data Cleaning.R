@@ -29,7 +29,10 @@ df_prestige_whisky <- df_prestige_whisky %>%
     age = as.integer(age),
     rla = as.numeric(rla),
     strength = as.numeric(strength),
-    bulk_litres = as.numeric(bulk_litres)
+    bulk_litres = as.numeric(bulk_litres),
+    auction_date = as.Date(auction_date, format='%d/%m/%Y'),
+    filling_date = as.Date(filling_date, format='%d/%m/%Y'),
+    regauged_date = as.Date(regauged_date, format='%d/%m/%Y')
   )
 
 for (line in 1:nrow(df_prestige_whisky)){
@@ -48,9 +51,25 @@ for (line in 1:nrow(df_prestige_whisky)){
   
 }
 
+avg_diff_regauge_auction_dates <- df_prestige_whisky %>%
+  filter(!is.na(auction_date) & !is.na(regauged_date)) %>%
+  mutate(diff = as.numeric(auction_date - regauged_date)) %>%
+  summarise(avg_diff = mean(diff)) %>%
+  pull()
+
+df_prestige_whisky <- df_prestige_whisky %>%
+  mutate(
+    auction_date = if_else(
+      is.na(auction_date),
+      regauged_date + avg_diff_regauge_auction_dates,
+      auction_date
+    )
+  )
+
 df_prestige_whisky <- df_prestige_whisky %>%
   mutate(
     auction_house = 'Prestige Whisky Auction',
+    age = round(as.numeric((auction_date - filling_date) / 365.25), 2),
     bottles_at_cask_strength = round(as.numeric(bulk_litres) / 0.7, 2),
     hammer_price_per_bottle_at_cask_strength = round(hammer_price / bottles_at_cask_strength, 2),
     hammer_price_per_litre_of_alcohol = round(hammer_price / rla, 2),

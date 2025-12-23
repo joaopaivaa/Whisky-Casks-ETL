@@ -266,7 +266,10 @@ df <- df %>%
     hammer_price_per_litre_of_alcohol = as.numeric(hammer_price_per_litre_of_alcohol),
     buyer_price = as.numeric(buyer_price),
     buyer_price_per_bottle_at_cask_strength = as.numeric(buyer_price_per_bottle_at_cask_strength),
-    buyer_price_per_litre_of_alcohol = as.numeric(buyer_price_per_litre_of_alcohol)
+    buyer_price_per_litre_of_alcohol = as.numeric(buyer_price_per_litre_of_alcohol),
+    auction_date = as.Date(auction_date, format='%d/%m/%Y'),
+    filling_date = as.Date(filling_date, format='%d/%m/%Y'),
+    regauged_date = as.Date(regauged_date, format='%d/%m/%Y')
   )
 
 # Optional/temporary

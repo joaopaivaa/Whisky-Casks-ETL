@@ -30,8 +30,14 @@ df_the_grand <- df_the_grand %>%
 
 # Just Whisky Auctions
 
-df_just_whisky <- read.csv2("just_whisky_auctions.csv", sep=',')
+df_just_whisky <- read.csv2("just_whisky_auctions.csv", sep=',', )
 sort(colnames(df_just_whisky))
+
+df_just_whisky <- df_just_whisky %>%
+  mutate(
+    age = as.numeric(age),
+    bottles_at_cask_strength = as.numeric(bottles_at_cask_strength)
+  )
 
 # Prestige Whisky Auction
 
@@ -39,14 +45,14 @@ df_prestige_whisky <- read.csv2("prestige_whisky_auction.csv", sep=',')
 sort(colnames(df_prestige_whisky))
 
 df_prestige_whisky <- df_prestige_whisky %>%
-  mutate(bottles_at_cask_strength = as.numeric(bottles_at_cask_strength))
+  mutate(
+    age = as.numeric(age),
+    bottles_at_cask_strength = as.numeric(bottles_at_cask_strength)
+  )
 
 # Junção
 
 df <- bind_rows(df_whisky_auctioneer, df_the_grand, df_just_whisky, df_prestige_whisky)
-
-colnames(df) <- gsub("_", " ", colnames(df))
-colnames(df) <- str_to_title(colnames(df))
 
 sort(colnames(df))
 
