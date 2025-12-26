@@ -55,9 +55,10 @@ lots_data <- lots_data %>%
          cask_type = NA,
          original_litres_alcohol = NA,
          original_bulk_litres = NA,
+         original_strength = NA,
          regauged_litres_alcohol = NA,
          regauged_bulk_litres = NA,
-         strength = NA)
+         regauged_strength = NA)
 
 for (j in 1:nrow(lots_data)){
   # Loads second page
@@ -83,41 +84,46 @@ for (j in 1:nrow(lots_data)){
   # Extracts lot details
   details <- description_detais %>% html_nodes('ul') %>% html_text() %>% str_split(., "\n\n|\n") %>% unlist(.) %>% str_trim()
   for (detail in details){
-    if (str_detect(str_to_title(detail), 'Originally Filled')) {
-      lots_data[['filling_date']][j] <- str_to_title(detail)
+    if (str_detect(str_to_lower(detail), 'originally filled')) {
+      lots_data[['filling_date']][j] <- detail
     }
-    if (str_detect(str_to_title(detail), 'Cask No|Cask Number')) {
-      lots_data[['cask_number']][j] <- str_to_title(detail)
+    if (str_detect(str_to_lower(detail), 'cask no|cask number')) {
+      lots_data[['cask_number']][j] <- detail
     }
-    if (str_detect(str_to_title(detail), 'Distillery')) {
-      lots_data[['distillery']][j] <- str_to_title(detail)
+    if (str_detect(str_to_lower(detail), 'distillery')) {
+      lots_data[['distillery']][j] <- detail
     }
-    if (str_detect(str_to_title(detail), 'Distilled')) {
-      lots_data[['year_distilled']][j] <- str_to_title(detail)
+    if (str_detect(str_to_lower(detail), 'distilled')) {
+      lots_data[['year_distilled']][j] <- detail
     }
-    if (str_detect(str_to_title(detail), 'Age')) {
-      lots_data[['age']][j] <- str_to_title(detail)
+    if (str_detect(str_to_lower(detail), 'age')) {
+      lots_data[['age']][j] <- detail
     }
-    if (str_detect(str_to_title(detail), 'Cask') & str_detect(str_to_title(detail), 'Type')) {
-      lots_data[['cask_type']][j] <- str_to_title(detail)
+    if (str_detect(str_to_lower(detail), 'cask') & str_detect(str_to_lower(detail), 'type')) {
+      lots_data[['cask_type']][j] <- detail
     }
-    if (str_detect(str_to_title(detail), 'Original') & str_detect(str_to_title(detail), 'Alcohol|Strength')) {
-      lots_data[['original_litres_alcohol']][j] <- str_to_title(detail)
+    if (str_detect(str_to_lower(detail), 'original') & str_detect(str_to_lower(detail), 'alcohol|strength')) {
+      lots_data[['original_litres_alcohol']][j] <- detail
     }
-    if (str_detect(str_to_title(detail), 'Original') & str_detect(str_to_title(detail), 'Bulk')) {
-      lots_data[['original_bulk_litres']][j] <- str_to_title(detail)
+    if (str_detect(str_to_lower(detail), 'original') & str_detect(str_to_lower(detail), 'bulk')) {
+      lots_data[['original_bulk_litres']][j] <- detail
     }
-    if (str_detect(str_to_title(detail), 'Re-Gauged') & str_detect(str_to_title(detail), 'Alcohol|Strength')) {
-      lots_data[['regauged_litres_alcohol']][j] <- str_to_title(detail)
+    if (str_detect(str_to_lower(detail), 'original') & str_detect(str_to_lower(detail), '%')) {
+      lots_data[['original_strength']][j] <- detail
     }
-    if (str_detect(str_to_title(detail), 'Re-Gauged') & str_detect(str_to_title(detail), 'Bulk')) {
-      lots_data[['regauged_bulk_litres']][j] <- str_to_title(detail)
+    if (str_detect(str_to_lower(detail), 're-gauged|current fill') & str_detect(str_to_lower(detail), 'alcohol')) {
+      lots_data[['regauged_litres_alcohol']][j] <- detail
     }
-    if (str_detect(str_to_title(detail), 'Strength')) {
-      lots_data[['strength']][j] <- str_to_title(detail)
+    if (str_detect(str_to_lower(detail), 're-gauged|current fill') & str_detect(str_to_lower(detail), 'bulk|litres|liters')) {
+      lots_data[['regauged_bulk_litres']][j] <- detail
+    }
+    if (str_detect(str_to_lower(detail), 're-gauged|current fill|strength') & str_detect(str_to_lower(detail), '%|strength')) {
+      lots_data[['regauged_strength']][j] <- detail
     }
   }
 }
+
+setwd("C:\\Users\\joaov\\Documents\\Whisky Casks ETL\\bronze")
   
 # Exports the RDS file
-write.csv2(lots_data, file = 'Whisky Online Auctions - Database.csv', row.names = FALSE)
+write.csv2(lots_data, file = 'Whisky Online Auctions - Casks Database.csv', row.names = FALSE)

@@ -14,11 +14,36 @@ setwd("C:\\Users\\joaov\\Documents\\Whisky Casks ETL\\bronze")
 
 df_whisky_online <- read.csv2("Whisky Online Auctions - Casks Database.csv", sep=';')
 
+df_whisky_online_manual_inserted <- read.csv2("Whisky Online Auctions - Casks Database - Manual Inserted.csv", sep=',')
+
+df_whisky_online_manual_inserted <- df_whisky_online_manual_inserted %>%
+  mutate(
+    regauged_date = as.Date(regauged_date, format='%d/%m/%Y'),
+    filling_date = as.Date(filling_date, format='%d/%m/%Y')
+  )
+
+df_whisky_online_manual_inserted <- df_whisky_online_manual_inserted %>% select(-description, -url)
+
+setwd("C:\\Users\\joaov\\Documents\\Whisky Casks ETL\\dim_distilleries_info")
+
+df_distilleries_dim <- read.csv2("dim_distilleries_info.csv", sep=';')
+
+df_distilleries_dim <- df_distilleries_dim %>%
+  select(Distillery, Region)
+
+df_distilleries_dim <- df_distilleries_dim %>%
+  rename(
+    distillery = Distillery,
+    region = Region
+  )
+
 df_whisky_online <- df_whisky_online %>%
   rename(
     bulk_litres = regauged_bulk_litres,
     rla = regauged_litres_alcohol,
-    auction_date = end_date
+    strength = regauged_strength,
+    auction_date = end_date,
+    url = link
   )
 
 df_whisky_online <- df_whisky_online %>%
@@ -26,17 +51,43 @@ df_whisky_online <- df_whisky_online %>%
     filling_date = str_split(filling_date, 'Filled:') %>% sapply(., function(x) x[2]) %>% str_replace_all('-', '/') %>% trimws(),
     distillery = str_split(distillery, 'Distillery:') %>% sapply(., function(x) x[2]) %>% trimws(),
     cask_type = str_split(cask_type, 'Cask Type:') %>% sapply(., function(x) x[2]) %>% trimws(),
-    bulk_litres = str_extract(bulk_litres, "\\d+(?:\\.\\d+)?(?=\\s*Bulk\\s*Litres)"),
-    strength = str_extract(strength, "\\d+(?:\\.\\d+)?(?=%)"),
-    rla = str_extract(rla, "\\d+(?:\\.\\d+)?(?=\\s*Litres Of Alcohol)")
-    
+    bulk_litres = str_extract(
+      str_to_lower(bulk_litres),
+      "(?:(\\d+(?:\\.\\d+)?)(?=\\s*(bulk\\s*litres|litres))|(?:(bulk\\s*litres|litres)\\s*[:=]?\\s*(\\d+(?:\\.\\d+)?)))"
+    ) |> 
+      str_extract("\\d+(?:\\.\\d+)?"),
+    strength = str_extract(str_to_lower(strength), "\\d+(?:\\.\\d+)?(?=\\s*%\\s*(abv)?)"),
+    rla = str_extract(str_to_lower(rla), "\\d+(?:\\.\\d+)?(?=\\s*(litres of alcohol|loa))")
+  )
+
+df_whisky_online <- df_whisky_online %>%
+  mutate(
+    bulk_litres  = if_else(title == "1 Premium Red Wine Hogshead Of Bonnington 2020 Of Peated Single Malt - Cask 0632 - Held In Bond", '222', bulk_litres),
+    strength = if_else(title == "1 Premium Red Wine Hogshead Of Bonnington 2020 Of Peated Single Malt - Cask 0632 - Held In Bond", '63.7', strength),
+    distillery = if_else(title == "1 Premium Red Wine Hogshead Of Bonnington 2020 Of Peated Single Malt - Cask 0632 - Held In Bond", "Bonnington", distillery),
+    filling_date = if_else(title == "1 Premium Red Wine Hogshead Of Bonnington 2020 Of Peated Single Malt - Cask 0632 - Held In Bond", "31/07/2020", filling_date),
+    cask_type = if_else(title == "1 Premium Red Wine Hogshead Of Bonnington 2020 Of Peated Single Malt - Cask 0632 - Held In Bond", "Premium Red Wine Hogshead", cask_type)
+  )
+
+df_whisky_online <- df_whisky_online %>%
+  mutate(
+    bulk_litres  = if_else(title == "1 Bonnington 2020 Cask Of Unpeated Single Malt - Cask 0019 - Held In Bond", '190', bulk_litres),
+    rla = if_else(title == "1 Bonnington 2020 Cask Of Unpeated Single Malt - Cask 0019 - Held In Bond", '71', strength),
+    distillery = if_else(title == "1 Bonnington 2020 Cask Of Unpeated Single Malt - Cask 0019 - Held In Bond", "Bonnington", distillery),
+    filling_date = if_else(title == "1 Bonnington 2020 Cask Of Unpeated Single Malt - Cask 0019 - Held In Bond", "24/03/2020", filling_date),
+    cask_type = if_else(title == "1 Bonnington 2020 Cask Of Unpeated Single Malt - Cask 0019 - Held In Bond", "Bourbon Barrel", cask_type)
+  )
+
+df_whisky_online <- df_whisky_online %>%
+  mutate(
+    bulk_litres  = if_else(title == "1 Bourbon Barrel Of Bruichladdich 2005 - Cask 345 - Held In Bond", '135', bulk_litres),
+    rla = if_else(title == "1 Bourbon Barrel Of Bruichladdich 2005 - Cask 345 - Held In Bond", '82.1', rla),
   )
 
 df_whisky_online <- df_whisky_online %>%
   mutate(
     auction_date = as.Date(auction_date),
-    filling_date = as.Date(filling_date),
-    auction_date = as.Date(auction_date)
+    filling_date = as.Date(filling_date, format='%d/%m/%Y')
   )
 
 df_whisky_online$cask_filling <- case_when(str_detect(df_whisky_online$cask_type, "1st|First|Fresh") ~ "First Fill",
@@ -63,8 +114,6 @@ df_whisky_online$cask_type <- case_when(str_detect(df_whisky_online$cask_type, "
                                         str_detect(df_whisky_online$cask_type, "Octave") ~ 'Octave',
                                         TRUE ~ NA)
 
-
-
 df_whisky_online <- df_whisky_online %>%
   mutate(
     rla = as.numeric(rla),
@@ -88,6 +137,10 @@ for (line in 1:nrow(df_whisky_online)){
   
 }
 
+df_whisky_online <- df_whisky_online %>% select(-filling_date)
+
+df_whisky_online <- merge(df_whisky_online, df_whisky_online_manual_inserted, by='title', all.x=TRUE)
+
 df_whisky_online <- df_whisky_online %>%
   mutate(
     auction_house = 'Whisky Online Auctions',
@@ -99,3 +152,51 @@ df_whisky_online <- df_whisky_online %>%
     buyer_price_per_bottle_at_cask_strength = round(buyer_price / bottles_at_cask_strength, 2),
     buyer_price_per_litre_of_alcohol = round(buyer_price / rla, 2),
   )
+
+df_whisky_online$currency <- 'Great Britain Pound (£)'
+
+df_whisky_online$distillery_status <- 'Operational'
+
+df_whisky_online <- df_whisky_online %>%
+  mutate(
+    distillery = if_else(
+      distillery == "Macallan Distilled: 1994",
+      "Macallan",
+      distillery
+    ),
+    distillery = if_else(
+      title == "1 Sherry Hogshead Of Macallan 1989 - Cask 1248 - Held In Bond",
+      "Macallan",
+      distillery
+    ),
+    distillery = if_else(
+      distillery == "Lochindaal/Bruichladdich",
+      "Bruichladdich",
+      distillery
+    ),
+    distillery = if_else(
+      distillery == "Isle Of Jura",
+      "Jura",
+      distillery
+    )
+  )
+
+df_whisky_online <- merge(df_whisky_online, df_distilleries_dim, by='distillery', all.x = TRUE)
+
+df_whisky_online <- df_whisky_online %>%
+  mutate(
+    region  = if_else(distillery == "Hinch", 'Ireland', region),
+    country  = if_else(distillery == "Hinch", 'Ireland', country)
+  )
+
+df_whisky_online <- df_whisky_online %>%
+  select(
+    age, auction_date, auction_house, bottles_at_cask_strength, bulk_litres, buyer_price, buyer_price_per_bottle_at_cask_strength,
+    buyer_price_per_litre_of_alcohol, cask_filling, cask_type, country, currency, distillery, distillery_status, filling_date,
+    hammer_price, hammer_price_per_bottle_at_cask_strength, hammer_price_per_litre_of_alcohol, previous_spirit, regauged_date,
+    region, rla, sold, strength, title, url
+  )
+
+setwd("C:\\Users\\joaov\\Documents\\Whisky Casks ETL\\silver")
+
+write.csv(df_whisky_online, file = "whisky_online_auctions.csv", row.names = FALSE, fileEncoding = "UTF-8")
