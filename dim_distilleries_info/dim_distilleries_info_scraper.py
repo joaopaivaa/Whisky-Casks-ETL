@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 import time
+import numpy as np
 
 def get_html(url):
 
@@ -86,6 +87,8 @@ distilleries_table_2 = distilleries_table_page.select('table.wikitable')[1].sele
 for line in distilleries_table_2:
     line = line.select('td')
     distillery = line[0].text.strip()
+    if distillery == 'Loch Lomond':
+        continue
     location = line[1].text.strip()
     region = None
     foundation_year = line[2].text.strip()
@@ -205,5 +208,20 @@ for j in distilleries_table.index:
             break
     
     time.sleep(1)
-    
-distilleries_table.to_csv('dim_distilleries_info.csv', sep=';', index=False, encoding='utf-8')
+
+distilleries_table['Region'] = (
+    np.where(distilleries_table['Region'] == 'Lowland', 'Lowlands',
+    np.where(distilleries_table['Region'] == 'Highland', 'Highlands',
+    np.where(distilleries_table['Region'] == 'Island', 'Highlands',
+     distilleries_table['Region'])))
+)
+
+distilleries_table.loc[distilleries_table['Distillery'] == 'Cameronbridge', 'Region'] = 'Lowlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'Girvan', 'Region'] = 'Lowlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'Invergordon', 'Region'] = 'Highlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'Loch Lomond', 'Region'] = 'Highlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'North British', 'Region'] = 'Lowlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'Starlaw', 'Region'] = 'Lowlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'Strathclyde', 'Region'] = 'Lowlands'
+
+distilleries_table.to_csv('dim_distilleries_info/dim_distilleries_info.csv', sep=';', index=False, encoding='utf-8')
