@@ -35,7 +35,7 @@ Do not include explanations.
 
 def analyze_image_url(image_url):
     response = client.chat.completions.create(
-        model="gpt-4.1-mini",  # modelo multimodal
+        model="gpt-4.1",  # modelo multimodal
         messages=[
             {
                 "role": "user",
