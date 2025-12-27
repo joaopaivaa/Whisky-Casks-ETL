@@ -30,7 +30,6 @@ Analyze the image and return ONLY valid JSON with the following fields:
 If a field is not visible or cannot be inferred, return null.
 Do not add extra fields.
 Do not include explanations.
-Consider that the Speyside distillery exists and can have the same name as the region.
 
 """
 
@@ -69,11 +68,11 @@ df = pd.read_csv("bronze\\Whisky Hammer - Casks Database.csv", sep=";")
 
 results = []
 
-for url in tqdm(df["lot_image"]):
+for url in tqdm(df["image"]):
     try:
         output = analyze_image_url(url)
         row = parse_gpt_json(output)
-        row["image_url"] = url
+        row["image"] = url
         results.append(row)
     except Exception as e:
         print(f"Erro na imagem {url}: {e}")
