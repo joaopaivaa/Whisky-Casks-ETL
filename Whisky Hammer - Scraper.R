@@ -1,13 +1,9 @@
-# Loads the rvest, stringr, dplyr, glue and purrr libraries
+# Loads the rvest, stringr and dplyr libraries
 suppressWarnings({
   suppressPackageStartupMessages({
     library(rvest)
-    library(httr)
     library(stringr)
     library(dplyr)
-    library(glue)
-    library(purrr)
-    library(lubridate)
   })
 })
 
@@ -21,8 +17,6 @@ search_page <- read_html("whiskyhammer_casks.html")
 lots_section <- search_page %>% html_nodes('div.itemsList') %>% html_nodes('div.item')
 
 lots_df <- data.frame()
-
-lot <- lots_section[39]
 
 for (lot in lots_section) {
   
