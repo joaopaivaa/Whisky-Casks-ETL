@@ -20,21 +20,21 @@ lots_df <- data.frame()
 
 for (lot in lots_section) {
   
-  lot_title <- lot %>% html_nodes('a.itemTitle') %>% html_text()
+  title <- lot %>% html_nodes('a.itemTitle') %>% html_text()
   
-  lot_url <- lot %>% html_nodes('a.itemTitle') %>% html_attr('href')
+  url <- lot %>% html_nodes('a.itemTitle') %>% html_attr('href')
   
-  lot_auction_date <- lot %>% html_nodes('div.itemPriceWrap span.current') %>% html_text() %>% str_replace('Sold', '') %>% trimws()
+  auction_date <- lot %>% html_nodes('div.itemPriceWrap span.current') %>% html_text() %>% str_replace('Sold', '') %>% trimws()
   
-  lot_price <- lot %>% html_nodes('div.itemPriceWrap span.priceStandard span.multiprice span.GBP.show') %>% html_text() %>% str_replace('£', '') %>% str_replace(',', '') %>% trimws()
+  hammer_price <- lot %>% html_nodes('div.itemPriceWrap span.priceStandard span.multiprice span.GBP.show') %>% html_text() %>% str_replace('£', '') %>% str_replace(',', '') %>% trimws()
   
-  lot_image <- lot %>% html_nodes('div.itemImageWrap a img.js_lazy') %>% html_attr('data-src') %>% paste0('https://www.whiskyhammer.com', .)
+  image <- lot %>% html_nodes('div.itemImageWrap a img.js_lazy') %>% html_attr('data-src') %>% paste0('https://www.whiskyhammer.com', .)
   
-  lot_df <- data.frame(lot_title = lot_title,
-                       lot_url = lot_url,
-                       lot_auction_date = lot_auction_date,
-                       lot_price = lot_price,
-                       lot_image = lot_image)
+  lot_df <- data.frame(title = title,
+                       url = url,
+                       auction_date = auction_date,
+                       hammer_price = hammer_price,
+                       image = image)
   
   lots_df <- bind_rows(lots_df, lot_df)
   
