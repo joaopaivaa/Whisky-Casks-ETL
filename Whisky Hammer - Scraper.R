@@ -22,6 +22,8 @@ lots_section <- search_page %>% html_nodes('div.itemsList') %>% html_nodes('div.
 
 lots_df <- data.frame()
 
+lot <- lots_section[39]
+
 for (lot in lots_section) {
   
   lot_title <- lot %>% html_nodes('a.itemTitle') %>% html_text()
@@ -32,7 +34,7 @@ for (lot in lots_section) {
   
   lot_price <- lot %>% html_nodes('div.itemPriceWrap span.priceStandard span.multiprice span.GBP.show') %>% html_text() %>% str_replace('£', '') %>% str_replace(',', '') %>% trimws()
   
-  lot_image <- lot %>% html_nodes('div.itemImageWrap a img.js_lazy.entered.loaded') %>% html_attr('src') %>% str_replace('./whiskyhammer_casks_files/', '') %>% paste0('https://www.whiskyhammer.com/uploads/images/products/newthumbs/', .)
+  lot_image <- lot %>% html_nodes('div.itemImageWrap a img.js_lazy') %>% html_attr('data-src') %>% paste0('https://www.whiskyhammer.com', .)
   
   lot_df <- data.frame(lot_title = lot_title,
                        lot_url = lot_url,
