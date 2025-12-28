@@ -224,4 +224,15 @@ distilleries_table.loc[distilleries_table['Distillery'] == 'North British', 'Reg
 distilleries_table.loc[distilleries_table['Distillery'] == 'Starlaw', 'Region'] = 'Lowlands'
 distilleries_table.loc[distilleries_table['Distillery'] == 'Strathclyde', 'Region'] = 'Lowlands'
 
+distilleries_table.loc[distilleries_table['Distillery'] == 'Caledonian', 'Region'] = 'Lowlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'Cambus', 'Region'] = 'Lowlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'Carsebridge', 'Region'] = 'Lowlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'Dumbarton', 'Region'] = 'Lowlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'Dundashill', 'Region'] = 'Lowlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'Garnheath', 'Region'] = 'Lowlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'Gartloch', 'Region'] = 'Lowlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'Kirkliston', 'Region'] = 'Lowlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'North of Scotland', 'Region'] = 'Lowlands'
+distilleries_table.loc[distilleries_table['Distillery'] == 'Port Dundas', 'Region'] = 'Lowlands'
+
 distilleries_table.to_csv('dim_distilleries_info/dim_distilleries_info.csv', sep=';', index=False, encoding='utf-8')

@@ -190,7 +190,7 @@ Ben Morven;;Highlands;;;1914;True;True;Malt Whisky;https://en.wikipedia.org/w/in
 Ben Wyvis;Invergordon, Scotland;Highlands;;Invergordon Distillers;1977;True;True;Malt Whisky;https://en.wikipedia.org/wiki/Ben_Wyvis_distillery;;1879;Closed/demolished;;1 wash, 1 spirit;;;;;;;;;;;;;;;;57.694722;-4.1525;/wiki/File:Ben_Wyvis_distillery_Alfred_Barnard.jpg
 Bon Accord;;Highlands;;;1913;True;True;Malt Whisky;https://en.wikipedia.org/w/index.php?title=Bon_Accord_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
 Burnside;;Campbeltown;;;1919;True;True;Malt Whisky;https://en.wikipedia.org/w/index.php?title=Burnside_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
-Caledonian;;Campbeltown;;;1842;True;True;Malt Whisky;https://en.wikipedia.org/w/index.php?title=Caledonian_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
+Caledonian;;Lowlands;;;1842;True;True;Malt Whisky;https://en.wikipedia.org/w/index.php?title=Caledonian_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
 Campbeltown;;Campbeltown;;;1924;True;True;Malt Whisky;https://en.wikipedia.org/w/index.php?title=Campbeltown_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
 Caperdonich;Rothes, Scotland;Speyside;;Chivas Brothers;2002;True;True;Malt Whisky;https://en.wikipedia.org/wiki/Caperdonich_distillery;;1898;Closed/demolished;Caperdonich Burn;2 wash, 2 spirit;;;;;;;;;;;;;;;;57.525278;-3.203333;
 Clydesdale;;Lowlands;;;1919;True;True;Malt Whisky;https://en.wikipedia.org/w/index.php?title=Clydesdale_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
@@ -270,13 +270,13 @@ Toberanrigh;;Campbeltown;;;1860;True;True;Malt Whisky;https://en.wikipedia.org/w
 Towiemore;Botriphnie, Scotland;Highlands;;Peter Dawson;1930;True;True;Malt Whisky;https://en.wikipedia.org/wiki/Towiemore_distillery;;1896;Closed/demolished;;1 wash, 1 spirit;;;;;;;;;;;;;;;;;;
 Union;;Campbeltown;;;1850;True;True;Malt Whisky;https://en.wikipedia.org/w/index.php?title=Union_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
 West Highland;;Campbeltown;;;1852;True;True;Malt Whisky;https://en.wikipedia.org/w/index.php?title=West_Highland_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
-Caledonian;;;;;1988;True;True;Grain Whisky;https://en.wikipedia.org/w/index.php?title=Caledonian_grain_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
-Cambus;;;;;1993;True;False;Grain Whisky;https://en.wikipedia.org/wiki/Cambus,_Clackmannanshire#Distillery;;;;;;;;;;;;;;;;;;;;;56.123685;-3.844224;/wiki/File:Cambus_-_geograph.org.uk_-_1758141.jpg
-Carsebridge;;;;;1983;True;True;Grain Whisky;https://en.wikipedia.org/w/index.php?title=Carsebridge_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
-Dumbarton;;;;;2002;True;True;Grain Whisky;https://en.wikipedia.org/wiki/Dumbarton#Whisky;;;;;;;;;;;;;;;;;;;;;55.95;-4.566667;/wiki/File:Dumbarton_from_the_northeast.jpg
-Dundashill;;;;;1902;True;False;Grain Whisky;https://en.wikipedia.org/w/index.php?title=Dundashill_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
-Garnheath;;;;;1986;True;True;Grain Whisky;https://en.wikipedia.org/wiki/Garnheath_distillery;;1964;;;;;;;;;S. S. Neuman;;;;;;;;;Drink industry;;;/wiki/File:Inver_House_Distillery_-_geograph.org.uk_-_199139.jpg
-Gartloch;;;;;1920;True;True;Grain Whisky;https://en.wikipedia.org/w/index.php?title=Gartloch_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
-Kirkliston;;;;;1920;True;False;Grain Whisky;https://en.wikipedia.org/w/index.php?title=Kirkliston_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
-North of Scotland;;;;;1980;True;True;Grain Whisky;https://en.wikipedia.org/w/index.php?title=North_of_Scotland_grain_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
-Port Dundas;;;;;2010;True;True;Grain Whisky;https://en.wikipedia.org/wiki/Port_Dundas#Port_Dundas_Grain_Distillery;;;;;;;;;;;;;;;;;;;;;55.881111;-4.254167;
+Caledonian;;Lowlands;;;1988;True;True;Grain Whisky;https://en.wikipedia.org/w/index.php?title=Caledonian_grain_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
+Cambus;;Lowlands;;;1993;True;False;Grain Whisky;https://en.wikipedia.org/wiki/Cambus,_Clackmannanshire#Distillery;;;;;;;;;;;;;;;;;;;;;56.123685;-3.844224;/wiki/File:Cambus_-_geograph.org.uk_-_1758141.jpg
+Carsebridge;;Lowlands;;;1983;True;True;Grain Whisky;https://en.wikipedia.org/w/index.php?title=Carsebridge_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
+Dumbarton;;Lowlands;;;2002;True;True;Grain Whisky;https://en.wikipedia.org/wiki/Dumbarton#Whisky;;;;;;;;;;;;;;;;;;;;;55.95;-4.566667;/wiki/File:Dumbarton_from_the_northeast.jpg
+Dundashill;;Lowlands;;;1902;True;False;Grain Whisky;https://en.wikipedia.org/w/index.php?title=Dundashill_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
+Garnheath;;Lowlands;;;1986;True;True;Grain Whisky;https://en.wikipedia.org/wiki/Garnheath_distillery;;1964;;;;;;;;;S. S. Neuman;;;;;;;;;Drink industry;;;/wiki/File:Inver_House_Distillery_-_geograph.org.uk_-_199139.jpg
+Gartloch;;Lowlands;;;1920;True;True;Grain Whisky;https://en.wikipedia.org/w/index.php?title=Gartloch_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
+Kirkliston;;Lowlands;;;1920;True;False;Grain Whisky;https://en.wikipedia.org/w/index.php?title=Kirkliston_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
+North of Scotland;;Lowlands;;;1980;True;True;Grain Whisky;https://en.wikipedia.org/w/index.php?title=North_of_Scotland_grain_distillery&action=edit&redlink=1;;;;;;;;;;;;;;;;;;;;;;;
+Port Dundas;;Lowlands;;;2010;True;True;Grain Whisky;https://en.wikipedia.org/wiki/Port_Dundas#Port_Dundas_Grain_Distillery;;;;;;;;;;;;;;;;;;;;;55.881111;-4.254167;
