@@ -257,7 +257,14 @@ df <- rename(df, auction_date = auction_end)
 
 df <- df %>%
   mutate(
-    age = as.integer(age),
+    auction_date = as.Date(auction_date, format='%d/%m/%Y'),
+    filling_date = as.Date(filling_date, format='%d/%m/%Y'),
+    regauged_date = as.Date(regauged_date, format='%d/%m/%Y')
+  )
+
+df <- df %>%
+  mutate(
+    age = as.numeric(age),
     rla = as.numeric(rla),
     bulk_litres = as.numeric(bulk_litres),
     hammer_price = as.numeric(hammer_price),
@@ -266,10 +273,7 @@ df <- df %>%
     hammer_price_per_litre_of_alcohol = as.numeric(hammer_price_per_litre_of_alcohol),
     buyer_price = as.numeric(buyer_price),
     buyer_price_per_bottle_at_cask_strength = as.numeric(buyer_price_per_bottle_at_cask_strength),
-    buyer_price_per_litre_of_alcohol = as.numeric(buyer_price_per_litre_of_alcohol),
-    auction_date = as.Date(auction_date, format='%d/%m/%Y'),
-    filling_date = as.Date(filling_date, format='%d/%m/%Y'),
-    regauged_date = as.Date(regauged_date, format='%d/%m/%Y')
+    buyer_price_per_litre_of_alcohol = as.numeric(buyer_price_per_litre_of_alcohol)
   )
 
 # Optional/temporary
