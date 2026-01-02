@@ -26,6 +26,8 @@ for (lot in lots_section) {
   
   auction_date <- lot %>% html_nodes('div.itemPriceWrap span.current') %>% html_text() %>% str_replace('Sold', '') %>% trimws()
   
+  sold <- lot %>% html_nodes('div.itemPriceWrap span.current') %>% html_text() %>% grepl('Sold', .)
+  
   hammer_price <- lot %>% html_nodes('div.itemPriceWrap span.priceStandard span.multiprice span.GBP.show') %>% html_text() %>% str_replace('£', '') %>% str_replace(',', '') %>% trimws()
   
   image <- lot %>% html_nodes('div.itemImageWrap a img.js_lazy') %>% html_attr('data-src') %>% paste0('https://www.whiskyhammer.com', .)
@@ -33,6 +35,7 @@ for (lot in lots_section) {
   lot_df <- data.frame(title = title,
                        url = url,
                        auction_date = auction_date,
+                       sold = sold,
                        hammer_price = hammer_price,
                        image = image)
   
