@@ -71,8 +71,6 @@ df_prestige_whisky <- df_prestige_whisky %>%
     auction_house = 'Prestige Whisky Auction',
     age = round(as.numeric((auction_date - filling_date) / 365.25), 2),
     bottles_at_cask_strength = round(as.numeric(bulk_litres) / 0.7, 2),
-    hammer_price_per_bottle_at_cask_strength = round(hammer_price / bottles_at_cask_strength, 2),
-    hammer_price_per_litre_of_alcohol = round(hammer_price / rla, 2),
     buyer_price = hammer_price * 0.1,
     buyer_price_per_bottle_at_cask_strength = round(buyer_price / bottles_at_cask_strength, 2),
     buyer_price_per_litre_of_alcohol = round(buyer_price / rla, 2),

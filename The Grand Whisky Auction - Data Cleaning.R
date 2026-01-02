@@ -164,7 +164,6 @@ df$cask_filling <- case_when(str_detect(df$title, "1st|First|Fresh") ~ "First Fi
 df$previous_spirit <- case_when(str_detect(df$title, "Sherry|Oloroso|Px|Pedro Ximenez|Amontillado|Palo Cortado") ~ "Sherry",
                                 str_detect(df$title, "Jack Daniel's|Heaven Hill|Bourbon") ~ 'Bourbon',
                                 str_detect(df$title, "Rum|Diamond Rum|Caroni") ~ 'Rum',
-                                str_detect(df$title, "Laphroaig") ~ 'Scotch Whisky',
                                 str_detect(df$title, "Madeira") ~ 'Madeira',
                                 str_detect(df$title, "Port") ~ 'Port',
                                 str_detect(df$title, "Vin Santo|Vino Santo|Mosctael|Muscat|Moscatel|Pineau|Climens|Guthrie|Rivesaltes|Wine") ~ 'Wine',
@@ -220,10 +219,6 @@ df$age <- round(as.numeric((as.Date(df$auction_end, format='%d/%m/%Y') - as.Date
 
 df$bottles_at_cask_strength <- round(df$bulk_litres / 0.7, 2)
 
-df$hammer_price_per_bottle_at_cask_strength <- round(as.numeric(df$hammer_price) / df$bottles_at_cask_strength, 2)
-
-df$hammer_price_per_litre_of_alcohol <- round(as.numeric(df$hammer_price) / df$rla, 2)
-
 df$buyer_price <- round(1.125 * as.numeric(df$hammer_price), 2)
 
 df$buyer_price_per_bottle_at_cask_strength <- round(as.numeric(df$buyer_price) / df$bottles_at_cask_strength, 2)
@@ -269,8 +264,6 @@ df <- df %>%
     bulk_litres = as.numeric(bulk_litres),
     hammer_price = as.numeric(hammer_price),
     bottles_at_cask_strength = as.numeric(bottles_at_cask_strength),
-    hammer_price_per_bottle_at_cask_strength = as.numeric(hammer_price_per_bottle_at_cask_strength),
-    hammer_price_per_litre_of_alcohol = as.numeric(hammer_price_per_litre_of_alcohol),
     buyer_price = as.numeric(buyer_price),
     buyer_price_per_bottle_at_cask_strength = as.numeric(buyer_price_per_bottle_at_cask_strength),
     buyer_price_per_litre_of_alcohol = as.numeric(buyer_price_per_litre_of_alcohol)

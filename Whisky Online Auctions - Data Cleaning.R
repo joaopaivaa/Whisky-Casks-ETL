@@ -99,7 +99,6 @@ df_whisky_online$cask_filling <- case_when(str_detect(df_whisky_online$cask_type
 df_whisky_online$previous_spirit <- case_when(str_detect(df_whisky_online$cask_type, "Sherry|Oloroso|Px|Pedro Ximenez|Amontillado|Palo Cortado") ~ "Sherry",
                                               str_detect(df_whisky_online$cask_type, "Jack Daniel's|Heaven Hill|Bourbon") ~ 'Bourbon',
                                               str_detect(df_whisky_online$cask_type, "Rum|Diamond Rum|Caroni") ~ 'Rum',
-                                              str_detect(df_whisky_online$cask_type, "Laphroaig") ~ 'Scotch Whisky',
                                               str_detect(df_whisky_online$cask_type, "Madeira") ~ 'Madeira',
                                               str_detect(df_whisky_online$cask_type, "Port") ~ 'Port',
                                               str_detect(df_whisky_online$cask_type, "Vin Santo|Vino Santo|Mosctael|Muscat|Moscatel|Pineau|Climens|Guthrie|Rivesaltes|Wine") ~ 'Wine',
@@ -146,8 +145,6 @@ df_whisky_online <- df_whisky_online %>%
     auction_house = 'Whisky Online Auctions',
     age = round(as.numeric((auction_date - filling_date) / 365.25), 2),
     bottles_at_cask_strength = round(as.numeric(bulk_litres) / 0.7, 2),
-    hammer_price_per_bottle_at_cask_strength = round(hammer_price / bottles_at_cask_strength, 2),
-    hammer_price_per_litre_of_alcohol = round(hammer_price / rla, 2),
     buyer_price = hammer_price * 0.1,
     buyer_price_per_bottle_at_cask_strength = round(buyer_price / bottles_at_cask_strength, 2),
     buyer_price_per_litre_of_alcohol = round(buyer_price / rla, 2),
@@ -193,8 +190,7 @@ df_whisky_online <- df_whisky_online %>%
   select(
     age, auction_date, auction_house, bottles_at_cask_strength, bulk_litres, buyer_price, buyer_price_per_bottle_at_cask_strength,
     buyer_price_per_litre_of_alcohol, cask_filling, cask_type, country, currency, distillery, distillery_status, filling_date,
-    hammer_price, hammer_price_per_bottle_at_cask_strength, hammer_price_per_litre_of_alcohol, previous_spirit, regauged_date,
-    region, rla, sold, strength, title, url
+    hammer_price, previous_spirit, regauged_date, region, rla, sold, strength, title, url
   )
 
 setwd("C:\\Users\\joaov\\Documents\\Whisky Casks ETL\\silver")
