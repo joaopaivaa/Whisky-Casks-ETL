@@ -244,7 +244,7 @@ df <- df %>%
 df <- df %>%
   select(
     auction_date, distillery, region, country, strength, rla, bulk_litres, distillery_status,
-    cask_type, cask_filling, previous_spirit, age, bottles_at_cask_strength, volume_12m, inf_adj_hammer_price,
+    cask_type, cask_filling, previous_spirit, age, bottles_at_cask_strength, volume_12m, volume_6m, volume_3m, inf_adj_hammer_price,
     inf_adj_hammer_price_per_bottle_at_cask_strength, inf_adj_hammer_price_per_litre_of_alcohol,
     inf_adj_hammer_price_per_litre_of_alcohol_times_age
   )
