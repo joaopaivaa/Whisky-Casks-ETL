@@ -1,4 +1,4 @@
-# Whisky Casks ETL
+# :inbox_tray: Whisky Casks ETL
 
 Comprehensive ETL project for extracting, cleaning, transforming and consolidating whisky casks auction data from multiple auction houses websites into analysis-ready datasets.
 
