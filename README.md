@@ -1,4 +1,4 @@
-# Whisky Casks ETL
+# :inbox_tray: Whisky Casks ETL
 
 Comprehensive ETL project for extracting, cleaning, transforming and consolidating whisky casks auction data from multiple auction houses websites into analysis-ready datasets.
 
@@ -39,4 +39,4 @@ If you want to contribute a new scraper or cleaning rule:
 
 ## License
 
-If this repository includes a license file, follow those documents for community and legal guidance.
+This repository includes a license file, follow this document for community and legal guidance.
