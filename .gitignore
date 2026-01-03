@@ -1,2 +1,7 @@
 backup databases old\
 .env
+.Rhistory
+gold/.Rhistory
+silver/.Rhistory
+bronze/.Rhistory
+dim_distilleries_info/.Rhistory
