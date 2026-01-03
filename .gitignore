@@ -1,5 +1,6 @@
 backup databases old\
 .env
+.env.*
 .Rhistory
 gold/.Rhistory
 silver/.Rhistory
