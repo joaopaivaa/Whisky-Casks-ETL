@@ -39,4 +39,4 @@ If you want to contribute a new scraper or cleaning rule:
 
 ## License
 
-If this repository includes a license file, follow those documents for community and legal guidance.
+This repository includes a license file, follow this document for community and legal guidance.
