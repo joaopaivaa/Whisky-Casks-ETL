@@ -211,14 +211,36 @@ df_inflation_adjusted_values <- data.frame(
 
 df$inf_adj_hammer_price <- df_inflation_adjusted_values$inflation_adjusted_hammer_price
 
-# New variables
+# Remove extra spaces
+
+df <- df %>%
+  mutate(
+    auction_house = trimws(auction_house),
+    cask_filling = trimws(cask_filling),
+    cask_type = trimws(cask_type),
+    country = trimws(country),
+    currency = trimws(currency),
+    distillery = trimws(distillery),
+    distillery_status = trimws(distillery_status),
+    previous_spirit = trimws(previous_spirit),
+    region = trimws(region),
+    title = trimws(title)
+  )
+
+# Set variables types
 
 df <- df %>%
   mutate(
     inf_adj_hammer_price = as.numeric(inf_adj_hammer_price),
     age = as.numeric(age),
     rla = as.numeric(rla),
-    bottles_at_cask_strength = as.numeric(bottles_at_cask_strength),
+    bottles_at_cask_strength = as.numeric(bottles_at_cask_strength)
+  )
+
+# New variables
+
+df <- df %>%
+  mutate(
     inf_adj_hammer_price_per_litre_of_alcohol_times_age = inf_adj_hammer_price * age / rla,
     inf_adj_hammer_price_per_bottle_at_cask_strength = round(inf_adj_hammer_price / bottles_at_cask_strength, 2),
     inf_adj_hammer_price_per_litre_of_alcohol = round(inf_adj_hammer_price / rla, 2),
@@ -244,8 +266,8 @@ df <- df %>%
 df <- df %>%
   select(
     auction_date, distillery, region, country, strength, rla, bulk_litres, distillery_status,
-    cask_type, cask_filling, previous_spirit, age, bottles_at_cask_strength, volume_12m, volume_6m, volume_3m, inf_adj_hammer_price,
-    inf_adj_hammer_price_per_bottle_at_cask_strength, inf_adj_hammer_price_per_litre_of_alcohol,
+    cask_type, cask_filling, previous_spirit, age, bottles_at_cask_strength, volume_12m, volume_6m, volume_3m,
+    inf_adj_hammer_price, inf_adj_hammer_price_per_bottle_at_cask_strength, inf_adj_hammer_price_per_litre_of_alcohol,
     inf_adj_hammer_price_per_litre_of_alcohol_times_age
   )
 
