@@ -215,16 +215,16 @@ df$inf_adj_hammer_price <- df_inflation_adjusted_values$inflation_adjusted_hamme
 
 df <- df %>%
   mutate(
-    auction_house = trimws(auction_house),
-    cask_filling = trimws(cask_filling),
-    cask_type = trimws(cask_type),
-    country = trimws(country),
-    currency = trimws(currency),
-    distillery = trimws(distillery),
-    distillery_status = trimws(distillery_status),
-    previous_spirit = trimws(previous_spirit),
-    region = trimws(region),
-    title = trimws(title)
+    auction_house = trimws(gsub("\u00A0", "", auction_house)),
+    cask_filling = trimws(gsub("\u00A0", "", cask_filling)),
+    cask_type = trimws(gsub("\u00A0", "", cask_type)),
+    country = trimws(gsub("\u00A0", "", country)),
+    currency = trimws(gsub("\u00A0", "", currency)),
+    distillery = trimws(gsub("\u00A0", "", distillery)),
+    distillery_status = trimws(gsub("\u00A0", "", distillery_status)),
+    previous_spirit = trimws(gsub("\u00A0", "", previous_spirit)),
+    region = trimws(gsub("\u00A0", "", region)),
+    title = trimws(gsub("\u00A0", "", title))
   )
 
 # Set variables types
