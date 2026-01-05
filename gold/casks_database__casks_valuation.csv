@@ -39,10 +39,10 @@
 "2022-03-07","Knockdhu","Highlands","Scotland","58.6",104,"177.47","Operational","Barrique","First Fill","Sherry",8,253.53,92,59,24,6075.58,23.96,58.42,467.352307692308
 "2022-03-07","Tullibardine","Highlands","Scotland","56.8",64,"112.68","Operational","Quarter Cask",NA,"Madeira",10,160.97,92,59,24,3216.48,19.98,50.26,502.575
 "2022-03-07","Glen Spey","Speyside","Scotland","60.4",62,"102.65","Operational","Quarter Cask",NA,"Sherry",12,146.64,92,59,24,5956.45,40.62,96.07,1152.86129032258
-"2022-03-07","Tullibradine","Highlands","Scotland","56.8",65.76,"115.77","Operational","Quarter Cask","First Fill","Wine",10,165.39,92,59,24,5360.8,32.41,81.52,815.206812652068
+"2022-03-07","Tullibardine","Highlands","Scotland","56.8",65.76,"115.77","Operational","Quarter Cask","First Fill","Wine",10,165.39,92,59,24,5360.8,32.41,81.52,815.206812652068
 "2022-02-07","Inchgower","Speyside","Scotland","60.3",71.82,"119.11","Operational","Quarter Cask",NA,"Sherry",11,170.16,85,59,25,5420.98,31.86,75.48,830.280980228349
-"2022-02-07","Tullibradine","Highlands","Scotland","58.3",108.23,"185.64","Operational","Barrique","First Fill","Madeira",9,265.2,85,59,25,5782.38,21.8,53.43,480.840986787397
-"2022-02-07","Tullibradine","Highlands","Scotland","56.8",65.76,"115.77","Operational","Quarter Cask","First Fill","Wine",9,165.39,85,59,25,3734.46,22.58,56.79,511.103102189781
+"2022-02-07","Tullibardine","Highlands","Scotland","58.3",108.23,"185.64","Operational","Barrique","First Fill","Madeira",9,265.2,85,59,25,5782.38,21.8,53.43,480.840986787397
+"2022-02-07","Tullibardine","Highlands","Scotland","56.8",65.76,"115.77","Operational","Quarter Cask","First Fill","Wine",9,165.39,85,59,25,3734.46,22.58,56.79,511.103102189781
 "2022-02-07","Springbank","Campbeltown","Scotland","49.6",38.3,"77.22","Operational",NA,"First Fill","Rum",25,110.31,85,59,25,42765.54,387.69,1116.59,27914.8433420366
 "2022-01-10","Knockdhu","Highlands","Scotland","56.4",91.8,"162.77","Operational","Barrique","First Fill","Sherry",9,232.53,91,54,30,7284.6,31.33,79.35,714.176470588235
 "2022-01-10","Strathmill","Speyside","Scotland","58.5",60.7,"103.76","Operational","Quarter Cask","First Fill","Sherry",13,148.23,91,54,30,9834.2,66.34,162.01,2106.17133443163
@@ -61,7 +61,6 @@
 "2021-08-09","Caol Ila","Islay","Scotland","60.2",96.08,"159.6","Operational","Hogshead","First Fill","Sherry",13,228,91,26,8,20534.25,90.06,213.72,2778.36438384679
 "2021-06-07","Port Dundas","Lowlands","Scotland","63.9",140.04,"219.15","Closed","Hogshead",NA,"Bourbon",12,313.07,97,43,15,4261.46,13.61,30.43,365.163667523565
 "2021-05-10","Bruichladdich","Islay","Scotland","63.6",132.29,"208","Operational","Hogshead",NA,"Wine",9,297.14,95,57,18,19640.79,66.1,148.47,1336.20916169023
-"2021-04-05",NA,"Scotland","Scotland","45.5",206.5,"453.85","Operational","Butt",NA,"Sherry",19,648.36,95,65,27,14570.84,22.47,70.56,1340.65840193705
 "2021-04-05","Arran (Lochranza)","Islands","Scotland","51.3",108.09,"210.7","Operational","Hogshead","First Fill","Sherry",25,301,95,65,27,51314.71,170.48,474.74,11868.5146637062
 "2021-03-08","Glen Elgin","Speyside","Scotland","62.01",270.98,"437","Operational","Butt",NA,"Sherry",8,624.29,95,65,28,21677.33,34.72,80,639.968410952838
 "2021-03-08","Glenglassaugh","Highlands","Scotland","59.7",26.51,"44.4","Operational","Octave","First Fill","Sherry",5,63.43,95,65,28,2295.25,36.19,86.58,432.902678234628
@@ -99,9 +98,6 @@
 "2019-12-02","Bruichladdich","Islay","Scotland","61.2",94.86,"155","Operational","Barrel","First Fill","Bourbon",14,221.43,19,8,5,15428.57,69.68,162.65,2277.03963736032
 "2019-12-02","Bruichladdich","Islay","Scotland","58.1",70.77,"121.81","Operational","Barrel","First Fill","Bourbon",16,174.01,19,8,5,12857.14,73.89,181.68,2906.80005652112
 "2019-09-02","Bruichladdich","Islay","Scotland","63.6",107.48,"169","Operational","Barrel","First Fill","Bourbon",7,241.43,21,8,3,12863.57,53.28,119.68,837.783680684778
-"2019-07-01","Caroni","Trinidad","Trinidad","64.5",104.68,"162.3","Closed","Barrel",NA,"Rum",22,231.86,26,8,6,37493.05,161.71,358.17,7879.70099350401
-"2019-05-20","Caroni","Trinidad","Trinidad","61.7",97.49,"158","Closed","Barrel",NA,"Rum",22,225.71,25,8,2,32321.59,143.2,331.54,7293.82480254385
-"2019-05-20","Caroni","Trinidad","Trinidad","62.1",104.7,"168.6","Closed","Barrel",NA,"Rum",22,240.86,25,8,2,32321.59,134.19,308.71,6791.54708691499
 "2019-05-06","Tullibardine","Highlands","Scotland","58.5",90.5,"152.7","Operational","Barrel","First Fill","Bourbon",11,218.14,25,8,2,5171.46,23.71,57.14,628.575248618784
 "2019-04-08","Tullibardine","Highlands","Scotland","58.5",90.5,"152.7","Operational","Barrel","First Fill","Bourbon",11,218.14,25,10,2,4667.29,21.4,51.57,567.294917127072
 "2018-12-03","Glasgow","Lowlands","Scotland","61.43",26.58,"43.27","Operational","Quarter Cask",NA,"Sherry",3,61.81,26,15,7,2018.91,32.66,75.96,227.867945823928

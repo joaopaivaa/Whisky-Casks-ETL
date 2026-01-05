@@ -211,6 +211,20 @@ df_inflation_adjusted_values <- data.frame(
 
 df$inf_adj_hammer_price <- df_inflation_adjusted_values$inflation_adjusted_hammer_price
 
+# Replace wrong distillery name
+
+df <- df %>%
+  mutate(
+    distillery = gsub("Tullibradine", "Tullibardine", distillery)
+  )
+
+# Remove Rum casks
+
+df <- df %>%
+  filter(
+    distillery != 'Caroni'
+  )
+
 # Remove extra spaces
 
 df <- df %>%
